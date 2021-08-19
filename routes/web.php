@@ -17,3 +17,5 @@ Route::get('/', function () {
 });
 
 Route::get('get-user-product/{user_id?}','UserController@getUserProduct');
+Route::get('email','EmailController@index');
+Route::post('sendMail','EmailController@sendMyMail');
