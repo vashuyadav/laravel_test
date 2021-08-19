@@ -64,6 +64,9 @@
             .m-b-md {
                 margin-bottom: 30px;
             }
+            table tr td {
+                padding: 5px 10px;
+            }
         </style>
     </head>
     <body>
@@ -74,21 +77,26 @@
                 </div>
 
                 <div class="links" align="center">
-                    <table width="80%">
+                    <table width="80%" border="1" cellpadding="0" cellspacing="0">
                         <tr>
                             <td><strong>User Name</strong></td>
                             <td><strong>Email</strong></td>
                             <td><strong>Product Title</strong></td>
-                            <td><strong>Description</strong></td>
-                            <td><strong>Action</strong></td>
                         </tr>
 
                         @foreach($records as $record)
-                            <tr id="{{ $record->id }}">
-                                <td>{{ $record->name }}</td>
-                                <td>{{ $record->email }}</td>
-                                <td>{{ $record->title }}</td>
-                                <td>{{ $record->address }}</td>
+                            <tr>
+                                <td><strong>{{ $record->name }}</strong></td>
+                                <td><strong>{{ $record->email }}</strong></td>
+                                <td><strong>
+                            @foreach($record->getProduct as $prod)
+                                <table>
+                                <tr>
+                                    <td>{{ $prod->title }}</td>
+                                </tr>
+                                </table>
+                            @endforeach
+                                </strong></td>
                             </tr>
                         @endforeach
 

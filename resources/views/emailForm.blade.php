@@ -4,7 +4,6 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="csrf-token" content="{{ csrf_token() }}">
         <title>Product List</title>
 
         <!-- Fonts -->
@@ -46,8 +45,7 @@
 
                 <div class="card" align="center">
                     <div style="border: solid 1px black; width: 40%">
-                        <form action="{{ route('sendEmail') }}" method="post" enctype="multipart/form-data">
-
+                        <form action="{{ route('sendMyMail') }}" method="post" enctype="multipart/form-data">
                             <div class="col-md-8 form">
                                 <span>Name</span>
                                 <input type="text" name="name" value="" class="form-control">
@@ -64,6 +62,8 @@
                                 <span>Message</span>
                                 <textarea name="message"></textarea>
                             </div>
+
+                            <input type="hidden" name="_token" value="{{ csrf_token() }}">
                             <div class="col-md-8 form">
                                 <input type="submit" name="submit" value="Send E-mail">
                             </div>

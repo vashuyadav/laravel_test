@@ -19,6 +19,7 @@ class UserController extends Controller
             //$records = User::whereId($userId)->get();
         }
         $tot = User::all();
+//        return $records;
         return view('productView', compact('records','tot'));
     }
 }
