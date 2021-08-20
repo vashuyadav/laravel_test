@@ -10,16 +10,17 @@ class UserController extends Controller
 {
     public function getUserProduct($userId = NULL){
         if($userId == NULL) {
-            $records = User::with(['getProduct'])->get();
-            //
-            //$records = User::all();
+            //$records = User::with(['getProduct'])->get();
+
+            $records = User::all();
         }
         else{
+//            $records = User::with(['getProduct'])->get();
             $records = User::whereId($userId)->with(['getProduct'])->get();
-            //$records = User::whereId($userId)->get();
+//            return $records;
+//            $records = User::whereId($userId)->get();
         }
-        $tot = User::all();
 //        return $records;
-        return view('productView', compact('records','tot'));
+        return view('productView', compact('records'));
     }
 }

@@ -16,6 +16,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('productList/{user_id?}','UserController@getUserProduct');
+Route::get('product-list/{user_id?}','UserController@getUserProduct')->name('product-list');
 Route::get('email','EmailController@index');
 Route::post('sendMail','EmailController@sendMyMail')->name('sendMyMail');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

@@ -5,10 +5,11 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Laravel Test</title>
+        <title>Product List</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
+        <link href="../assets/css/bootstrap.min.css" rel="stylesheet" type="text/css">
 
         <!-- Styles -->
         <style>
@@ -46,7 +47,8 @@
             }
 
             .title {
-                font-size: 84px;
+                font-size: 24px;
+                font-weight: bold;
             }
 
             .links > a {
@@ -62,24 +64,43 @@
             .m-b-md {
                 margin-bottom: 30px;
             }
+            table tr td {
+                padding: 5px 10px;
+            }
         </style>
     </head>
     <body>
-        <div class="flex-center position-ref full-height">
-            @if (Route::has('login'))
-                <div class="top-right links">
-                    @if (Auth::check())
-                        <a href="{{ url('/home') }}">Home</a>
-                    @else
-                        <a href="{{ url('/login') }}">Login</a>
-                        <a href="{{ url('/register') }}">Register</a>
-                    @endif
-                </div>
-            @endif
-
+        <div class="">
             <div class="content">
                 <div class="title m-b-md">
-                    Welcome In Laravel Test
+                    Laravel Test
+                </div>
+
+                <div class="links" align="center">
+                    <table width="80%" border="1" cellpadding="0" cellspacing="0">
+                        <tr>
+                            <td><strong>User Name</strong></td>
+                            <td><strong>Email</strong></td>
+                            <td><strong>Product Title</strong></td>
+                        </tr>
+
+                        @foreach($records as $record)
+                            <tr>
+                                <td><strong>{{ $record->name }}</strong></td>
+                                <td><strong>{{ $record->email }}</strong></td>
+                                <td><strong>
+                            @foreach($record->getProduct as $prod)
+                                <table>
+                                <tr>
+                                    <td>{{ $prod->title }}</td>
+                                </tr>
+                                </table>
+                            @endforeach
+                                </strong></td>
+                            </tr>
+                        @endforeach
+
+                    </table>
                 </div>
             </div>
         </div>
