@@ -1,76 +1,56 @@
-<!doctype html>
-<html lang="{{ app()->getLocale() }}">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Product List</title>
+@extends('layouts.app')
 
-        <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
-        <link href="../assets/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+@section('content')
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
 
-        <!-- Styles -->
-        <style>
-            html, body {
-                background-color: #fff;
-                color: #636b6f;
-                font-family: 'Raleway', sans-serif;
-                font-weight: 100;
-                height: 100vh;
-                margin: 0;
-            }
+                <div class="panel panel-default">
+                    <div class="panel-heading">Send Email</div>
 
-            .content {
-                text-align: center;
-            }
-
-            .title {
-                font-size: 24px;
-                font-weight: bold;
-            }
-
-            .form {
-                padding: 10px;
-            }
-
-        </style>
-    </head>
-    <body>
-        <div class="">
-            <div class="content">
-                <div class="title m-b-md">
-                    Laravel Email
-                </div>
-
-                <div class="card" align="center">
-                    <div style="border: solid 1px black; width: 40%">
-                        <form action="{{ route('sendMyMail') }}" method="post" enctype="multipart/form-data">
-                            <div class="col-md-8 form">
-                                <span>Name</span>
-                                <input type="text" name="name" value="" class="form-control">
+                    <div class="panel-body">
+                        @if (session('status'))
+                            <div class="alert alert-success">
+                                {{ session('status') }}
                             </div>
-                            <div class="col-md-8 form">
-                                <span>Email</span>
-                                <input type="email" name="email" value="" class="form-control">
-                            </div>
-                            <div class="col-md-8 form">
-                                <span>Subject</span>
-                                <input type="text" name="subject" value="" class="form-control">
-                            </div>
-                            <div class="col-md-8 form">
-                                <span>Message</span>
-                                <textarea name="message"></textarea>
-                            </div>
+                        @endif
 
-                            <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                            <div class="col-md-8 form">
-                                <input type="submit" name="submit" value="Send E-mail">
-                            </div>
-                        </form>
+                            <form action="{{ route('send-mail') }}" method="post" enctype="multipart/form-data">
+                                <div class="col-md-8 form">
+                                    <span>Name</span>
+                                    <input type="text" name="name" value="" required class="form-control">
+                                </div>
+                                <div class="col-md-8 form">
+                                    <span>Email</span>
+                                    <input type="email" name="email" value="" required class="form-control">
+                                </div>
+                                <div class="col-md-8 form">
+                                    <span>Subject</span>
+                                    <input type="text" name="subject" value="" required class="form-control">
+                                </div>
+                                <div class="col-md-8 form">
+                                    <span>Message</span>
+                                    <textarea class="form-control" name="message" required></textarea>
+                                </div>
+
+                                <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                                <div class="col-md-8 form">
+                                    <br>
+                                    <input type="submit" name="submit" class="btn btn-success form-control" value="Send E-mail">
+                                </div>
+                            </form>
                     </div>
                 </div>
+
+
             </div>
         </div>
-    </body>
-</html>
+    </div>
+@endsection
+
+<style>
+
+    table tr td{
+        padding: 5px;
+    }
+</style>

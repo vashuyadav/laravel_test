@@ -16,9 +16,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('product-list/{user_id?}','UserController@getUserProduct')->name('product-list');
+Route::get('product-list/{user_id?}','ProductController@getUserProduct')->name('product-list');
 Route::get('email','EmailController@index');
-Route::post('sendMail','EmailController@sendMyMail')->name('sendMyMail');
+Route::post('send-mail','EmailController@sendMyMail')->name('send-mail');
 
 Auth::routes();
 

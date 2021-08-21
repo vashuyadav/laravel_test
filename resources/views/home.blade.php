@@ -13,6 +13,7 @@
                             {{ session('status') }}
                         </div>
                     @endif
+
                     <h4>Hello Mr. {{ Auth::user()->name }}</h4>
                     <a href="{{ route('product-list', Auth::user()->id) }}">View Product List</a>
                 </div>

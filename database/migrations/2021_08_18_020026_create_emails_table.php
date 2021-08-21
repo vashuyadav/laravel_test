@@ -19,7 +19,6 @@ class CreateEmailsTable extends Migration
             $table->string('to');
             $table->string('from');
             $table->text('description');
-            $table->string('file');
             $table->timestamps();
         });
     }

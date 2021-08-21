@@ -28,9 +28,15 @@
                     </button>
 
                     <!-- Branding Image -->
-                    <a class="navbar-brand" href="{{ url('/') }}">
+                    <a class="navbar-brand" href="{{ url('home') }}">
                         {{ config('app.name', 'Laravel') }}
                     </a>
+                    @if (Auth::guest())
+
+                    @else
+                        <a class="navbar-brand" href="{{ url('email') }}">Send Email </a>
+                        <a class="navbar-brand" href="{{ route('product-list', Auth::user()->id) }}">Product List </a>
+                    @endif
                 </div>
 
                 <div class="collapse navbar-collapse" id="app-navbar-collapse">
